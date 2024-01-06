@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <title>Algorithm Visualization</title>
+  <style>
+    .border-container {
+      border: 2px solid #000;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+   
+.footer {
+    width: 100%;
+    font-family: 'Ubuntu', monospace, Courier;
+    color:#afafaf;
+    padding-top: 30px;
+    padding-bottom: 50px;
+    position: relative;
+
+    font-size: 16px;
+    white-space: nowrap;
+}
+
+.footer-container {
+    position: relative;
+    left: 50%;
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    display: inline-block;
+}
+
+.footer-content {
+    float: left;
+    margin-left: 6vw;
+    margin-bottom: 15px;
+    vertical-align: top;
+    text-decoration: none;
+}
+
+.footer-title {
+    color: #690584;
+    font-size: 25px;
+
+}
+
+.footer-content img {
+    padding:5px;
+    width: 32px;
+    height: 32px;
+}
+
+@media only screen and (max-width: 820px) {
+    .footer {
+        font-size: 17px;
+    }
+
+    .footer-title {
+        font-size: 20px;
+    }
+
+    .footer-content:first-child {
+        margin-left: 30px !important;
+    }
+}
+    
+  </style>
+</head>
+<body class="bg-light">
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#" style="color: rgb(112, 116, 205); font-style: oblique ;">
+        <img src="Screenshot (35).png" alt="AlgorithmViz Logo" width="30" height="30" class="d-inline-block align-top">
+        AlgorithmViz
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="index1.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <!-- Sorting Dropdown -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="sortingDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Sorting
+                </a>
+                <div class="dropdown-menu" aria-labelledby="sortingDropdown">
+                  <a class="dropdown-item" href="selection.html">Selection Sort</a>
+                  <a class="dropdown-item" href="inseration.html">Insertion Sort</a>
+                  <a class="dropdown-item" href="bubble.html">Bubble Sort</a>
+                  <a class="dropdown-item" href="quicksort.html">Quick Sort</a>
+                  <a class="dropdown-item" href="Merge-Sort-Visualization-master/merge.html">Merge Sort</a>
+                </div>
+            </li>
+            <!-- Searching Dropdown -->
+            <li class="nav-item">
+              <a class="nav-link" href="searching-algorithm/main.html">Searching</a>
+          </li>
+            <!-- Other menu items -->
+            <li class="nav-item">
+                <a class="nav-link" href="aboutus.html">About us</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Bootstrap JavaScript and jQuery (optional) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+  <!-- Jumbotron Header -->
+  <div class="jumbotron jumbotron-fluid text-center">
+    <div class="container">
+      <h1 class="display-4" style="color: rgb(112, 116, 205); font-style: oblique ; "><b>Welcome to Algorithm Visualization</b></h1>
+      <p class="lead">Explore and understand various algorithms through interactive visualizations.</p>
+    </div>
+  </div>
+
+  <div class="container mt-5 border-container">
+    <h2 class="text-primary mb-4">Sorting Algorithm</h2>
+   <div style="font-size: 18px">
+    
+    <p>Sorting algorithms are used to sort a data structure according to a specific order relationship, such as numerical order or lexicographical order.</p>
+    <p>
+        This operation is one of the most important and widespread in computer science.
+        For a long time, new methods have been developed to make this procedure faster and faster.
+    </p>
+    <p>
+    There are currently hundreds of different sorting algorithms, each with its own specific characteristics.
+    They are classified according to two metrics: space complexity and time complexity.<br><br>
+    Those two kinds of complexity are represented with <a href="https://www.programiz.com/dsa/asymptotic-notations#:~:text=Asymptotic%20notations%20are%20the%20mathematical,linear%20i.e.%20the%20best%20case." target="_blank">asymptotic notations</a>, mainly with the symbols O, <span class="symbol">Θ</span>, <span class="symbol">Ω</span>, representing
+    respectively the upper bound, the tight bound, and the lower bound of the algorithm's complexity, specifying in brackets an expression in terms of
+    <code><var>n</var></code>, the number of the elements of the data structure.<br><br>
+    Most of them fall into two categories:
+    </p>
+    <ul>
+        <li>Logarithmic<br>
+            The complexity is proportional to the binary logarithm (i.e to the base 2) of <code><var>n</var></code>.<br>
+            An example of a logarithmic sorting algorithm is Quick sort, with space and time complexity O<code>(n × log n)</code>.<br><br>
+        </li>
+        <li>Quadratic<br>
+            The complexity is proportional to the square of <code><var>n</var></code>.<br>
+            An example of a quadratic sorting algorithm is Bubble sort, with a time complexity of O<code>(n<sup>2</sup>)</code>.<br>
+        </li>
+    </ul>
+    <p>
+        Space and time complexity can also be further subdivided into 3 different cases: best case, average case and worst case.
+    </p>
+    <p>
+        Sorting algorithms can be difficult to understand and it's easy to get confused.
+        We believe visualizing sorting algorithms can be a great way to better understand their functioning while having fun!
+    </p>
+    <h2 class="text-primary mb-4">Searching Algorithm</h2>
+     
+    
+    <p>The searching algorithms are used to search or find one or more than one element from a dataset. These type of algorithms are used to find elements from a specific data structures.
+        </p>
+   
+        <p>Searching may be sequential or not. If the data in the dataset are random, then we need to use sequential searching. Otherwise we can use other different techniques to reduce the complexity.</p>
+        <p>Linear Search is defined as a sequential search algorithm that starts at one end and goes through each element of a list until the desired element is found, otherwise the search continues till the end of the data set.</p>
+        <p>In computer science, binary search, also known as half-interval search, logarithmic search, or binary chop, is a search algorithm that finds the position of a target value within a sorted array. Binary search compares the target value to the middle element of the array.</p>
+    
+   </div>
+  </div>
+
+  <br>
+  <div class="container mt-5 border-container" style="font-size: 18px;">
+    <h2 class="text-primary mb-4">Algorithm Visualization</h2>
+   
+   <p>Algorithm visualization refers to the representation of algorithms in a visual or graphical form to aid understanding and analysis. It involves creating visual representations of how algorithms work, step by step, to help individuals comprehend the logic and flow of the algorithmic processes. This visualization can take various forms, including interactive simulations, animations, charts, and graphs.
+  </p> 
+  <pre>
+    The key objectives of algorithm visualization are:
+
+1. Educational Tool: 
+It serves as an educational tool to help students, programmers, and enthusiasts understand complex algorithms more intuitively. Visualizations can break down intricate processes into manageable steps, making it easier for individuals to grasp the underlying concepts.
+
+2. Debugging and Analysis: 
+Visualizations can be valuable for debugging and analyzing algorithms. By observing the step-by-step execution of an algorithm, users can identify potential errors, understand the efficiency of the algorithm, and optimize its performance.
+
+3. Problem Solving: 
+Visualization aids in problem-solving by providing a clearer picture of how algorithms operate. It allows users to see the impact of different inputs on the algorithm's behavior and output.
+
+4. Teaching and Learning: 
+In educational settings, algorithm visualization tools are used by instructors to teach algorithms and data structures. They provide a dynamic and engaging way to convey abstract concepts, enhancing the learning experience.
+
+5. Algorithm Comparison: 
+Visualizations can be used to compare different algorithms, highlighting their strengths, weaknesses, and performance characteristics. This is particularly useful for choosing the most suitable algorithm for a specific task or problem.
+
+  </pre>
+<p>Popular algorithms often visualized include sorting algorithms (e.g., inseration, selection, bubble sort, quicksort, merge sort), searching algorithms (e.g., binary search,linear search).
+
+  Algorithm visualization tools can be standalone applications, web-based platforms, or integrated into programming environments. They leverage graphics, animations, and interactive elements to create an engaging and effective learning experience.
+   </p>
+ </div>
+ 
+ <footer class="footer">
+  <div class="jumbotron jumbotron-fluid text-center">
+   
+  <div class="footer-container" >
+
+      <div class="footer-content" style="margin-left:0;">
+      <img src="Screenshot (35).png" alt="AlgorithmViz Logo"  >
+      
+          <span class="footer-title" style="font-family: 'Jura', Courier, monospace;">DEVELOPED BY...</span><br>
+          <p style="color:#b91ba1;">&emsp;Komal Jadhav<br></p>
+      </div>
+      <div class="footer-content">
+          <span class="footer-title">Contact Information</span><br>
+          <h5></h5>
+                    <p style="color: #b91ba1;">Email: jadhavkomal518@gmail.com</p>
+                    <p style="color: #b91ba1;">Phone: 7385882219</p>
+         
+
+      </div>
+      <div class="footer-content">
+          <span class="footer-title">Quick Links</span><br>
+         
+          <ul class="list-unstyled" style="color: #b91ba1;">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="bubble.html">Sorting</a></li>
+              <li><a href="searching-algorithm/main.html">Searching</a></li>
+              <li><a href="aboutus.html">About us</a></li>
+          </ul>
+      </div>
+  </div>
+  </div>
+
+</footer>
+</body>
+</html>

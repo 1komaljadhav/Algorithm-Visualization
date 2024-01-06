@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Sorting algorithm visualizer using D3js. It will help you to understand the algorithm. I've used swapping animation for clear understanding of the algorithm."
+    />
+    <title>Sorting Algorithm Visualizer </title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap.min.css"
+      integrity="sha512-T584yQ/tdRR5QwOpfvDfVQUidzfgc2339Lc8uBDtcp/wYu80d7jwBgAxbyMh0a9YM9F8N3tdErpFI8iaGx6x5g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .comp{
+    padding-left: 02%;
+    width:50%;
+    font-size: 16px;
+    margin-left: 25%;
+    font-family:'Courier New', Courier, monospace;
+    border-color: deeppink;
+    border-style: dashed;
+    border-radius: 5px;
+
+}
+
+.con{
+    padding-left: 05%;
+    width:80%;
+    
+    font-size: 16px;
+    margin-left: 10%;
+    font-family:'Courier New', Courier, monospace;
+    border-color: blueviolet;
+    border-style: double;
+    border-radius: 5px;
+    background-color:azure;
+  
+}
+     </style>
+  </head>
+  <body>
+    
+    <p class="sound"><a id="sound" href="#"></a></p>
+    <div class="container">
+      <h2>Selection Sort</h2>
+    </div>
+
+    <br />
+    <div class="container">
+      <div class="form-inline">
+        <div class="form-group">
+          <select class="form-control" id="get-algo">
+            
+            <option value="selection-sort">Selection Sort</option>
+            
+          </select>
+        </div>
+
+        <div class="form-group mx-sm-3">
+          <button class="btn btn-primary" id="sort">Sort</button>
+        </div>
+        <div class="form-group">
+          <button class="btn none btn-danger" id="stop">Stop</button>
+        </div>
+        <b><div class="btn btn-primary" style="margin-left: 25%;">
+          <a href="https://play.quizshow.io/show/0e9222c6aa936d1a95b9" style="color:rgb(58, 55, 152);">Exercise</a>
+         </div></b>
+      </div>
+      <br />
+
+      <div class="row">
+        <div class="col-md-3">
+          <button class="btn btn-info" id="random-data">
+            Generate Random Data
+          </button>
+        </div>
+        <div class="col-md-3">
+          <label>
+            Speed:
+            <input
+              type="range"
+              id="speed"
+              name="speed"
+              min="100"
+              max="800"
+              value="300"
+              onchange="setSpeed()"
+            />
+          </label>
+        </div>
+      </div>
+    </div>
+    <br><br><br>
+<center><div class="container" >
+    <div class="bar-chart">
+      <div id="chart"></div>
+      <hr />
+    </div>
+  </div></center><br><br>
+
+ <center><h3> <p id="o" style="color:blueviolet;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;font-size: 20px;" ></p>
+ </h3></center>
+  <div class="con">
+    <fieldset style="width: 800px; height: 1400px;box-shadow: 5px;border-color: blueviolet;font-size: 16px;">
+     <h1 style="color: blueviolet;text-decoration-style: dashed;"><b>Selection Sort Algorithm</b></h1>
+     <b>Selection sort is a simple and efficient sorting algorithm that works by repeatedly selecting the smallest (or largest) element from the unsorted portion of the list and moving it to the sorted portion of the list. The algorithm repeatedly selects the smallest (or largest) element from the unsorted portion of the list and swaps it with the first element of the unsorted portion. This process is repeated for the remaining unsorted portion of the list until the entire list is sorted. One variation of selection sort is called “Bidirectional selection sort” which goes through the list of elements by alternating between the smallest and largest element, this way the algorithm can be faster in some cases.
+     <hr>
+     <ul>
+      <p>The algorithm maintains two subarrays in a given array.</p>
+      <li>The subarray which already sorted.</li>
+      <li>The remaining subarray was unsorted.</li>
+     </ul>
+
+     <p>In every iteration of the selection sort, the minimum element (considering ascending order) from the unsorted subarray is picked and moved to the beginning of the sorted subarray. </p>
+     <p>After every iteration sorted subarray size increase by one and the unsorted subarray size decrease by one.
+
+     </p></b>
+     <hr>
+     
+     <h3>How does Selection Sort Work?
+     </h3>
+     
+
+     <p><h3>Input: arr[] = {64, 25, 12, 22, 11}
+     </h3>
+       <b>
+       <ul>
+         <h4 style="color:blueviolet"><b>First Pass:</b> </h4>
+      <li>For the first position in the sorted array, the whole array is traversed from index 0 to 4 sequentially. The first position where 64 is stored presently, after traversing whole array it is clear that 11 is the lowest value.
+       <li>64   	   25   	   12   	   22   	   11    </li>
+      <li>Thus, replace 64 with 11. After one iteration 11, which happens to be the least value in the array, tends to appear in the first position of the sorted list.
+        11   	   25   	 12   	   22   	   64   </li>   
+      <h4 style="color:blueviolet"> <b>Second Pass:</b> </h4><li> Now, during second iteration it should look like this:
+      <li> For the second position, where 25 is present, again traverse the rest of the array in a sequential manner.
+        11   	   25   	   12   	   22   	   64   </li>
+        <li>After traversing, we found that 12 is the second lowest value in the array and it should appear at the second place in the array, thus swap these values.
+          11   	   12   	   25   	   22   	   64   </li>
+      <h4 style="color:blueviolet"><b>Third Pass:</b></h4>
+       
+       <li>Now, for third place, where 25 is present again traverse the rest of the array and find the third least value present in the array.
+        11   	   12   	   25   	   22   	   64   
+        <li> While traversing, 22 came out to be the third least value and it should appear at the third place in the array, thus swap 22 with element present at third position.
+          11   	   12   	   22   	   25   	   64 </li>
+          
+        
+        
+          <h4 style="color:blueviolet"><b>Fifth Pass:</b></h4>
+        
+          <li> At last the largest value present in the array automatically get placed at the last position in the array.  </li>
+          <li> As 25 is the 4th lowest value hence, it will place at the fourth position.
+            11   	   12   	   22   	   25   	   64   </li>
+            <li>The resulted array is the sorted array.
+              11   	   12   	   22   	   25   	   64   </li>
+          </p></ul>
+</div></b><br><br>
+    
+
+          <div id="comp" class="comp" style="background-color: rgb(201, 239, 239);font-size: 16px;">
+          <b> <p><h3 style="color:deeppink ;">Complexity</h3><span>Worst Time: </span><span>O(n^2)</span><br><span>Avg. Time: </span><span>O(n^2)</span><br><span>Best Time: </span><span>O(n^2)</span><br><span>Space: </span><span>O(1)</span></p>
+          </b> </div><br><br><br> 
+         
+          <b><div id="mydiv" class="comp" style="background-color: antiquewhite;" name="mydiv">
+            <pre style=" font-family: 'Courier New', Courier, monospace;font-size: 16px;"><h3 style="color:deeppink ;">Selection Sort</h3>       
+   function SelectionSort(list) {
+       const steps = [];
+      let sortedArrLen = 0;
+      while (sortedArrLen < list.length) {
+      let cur = sortedArrLen;
+      steps.push({ action: 'move cursor1', pos: cur, label: 'cur1' });
+      for (let i = sortedArrLen + 1; i < list.length; i++) {
+      steps.push({ action: 'compare', i, j: cur });
+       if (list[i] < list[cur]) {
+           cur = i;
+        }
+       }
+        swap(sortedArrLen, cur, list);
+        steps.push({ action: 'swap', i: sortedArrLen, j: cur });
+       sortedArrLen++;
+      }
+        return list;
+    }</pre></b></div></div>
+       
+      
+
+    <br><br>
+   
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="base.js"></script>
+    <script src="function.js"></script>
+  </body>
+</html>

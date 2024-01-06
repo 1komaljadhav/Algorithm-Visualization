@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Sorting algorithm visualizer using D3js. It will help you to understand the algorithm. I've used swapping animation for clear understanding of the algorithm."
+    />
+    <title>Sorting Algorithm Visualizer </title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap.min.css"
+      integrity="sha512-T584yQ/tdRR5QwOpfvDfVQUidzfgc2339Lc8uBDtcp/wYu80d7jwBgAxbyMh0a9YM9F8N3tdErpFI8iaGx6x5g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+   <style>
+   .comp{
+    padding-left: 05%;
+    width:50%;
+    font-size: 16px;
+    margin-left: 25%;
+    font-family:'Courier New', Courier, monospace;
+    border-color: deeppink;
+    border-style: dashed;
+    border-radius: 5px;
+
+}
+
+.con{
+    padding-left: 10%;
+    width:70%;
+    
+    font-size: 16px;
+    margin-left: 15%;
+    font-family:'Courier New', Courier, monospace;
+    border-color: blueviolet;
+    border-style: double;
+    border-radius: 5px;
+    background-color:azure;
+  
+}</style> 
+  </head>
+  <body>
+    <br>
+    <p style="margin-left: 90%"class="sound"><a id="sound" href=" "></a></p>
+    <center><h2>Bubble Sort</h2></center>
+      
+    </div>
+
+    <br />
+    <div class="container">
+      <div class="form-inline">
+        <div class="form-group">
+          <select class="form-control" id="get-algo">
+            <option value="bubble-sort">Bubble Sort</option>
+            
+          </select>
+        </div>
+
+        <div class="form-group mx-sm-3">
+          <button class="btn btn-primary" id="sort">Sort</button>
+        </div>
+        <div class="form-group">
+          <button class="btn none btn-danger" id="stop">Stop</button>
+        </div>
+        
+        <b><div class="btn btn-primary" style="margin-left: 25%;">
+          <a href="https://play.quizshow.io/show/ddcaf5b255ea1fb9314c" style="color:rgb(249, 246, 255);">Exercise</a><br>
+
+        </div></b>
+      </div>
+      
+<div>
+
+          <br><button id="btn" onclick="audio1.play();">EXPLANATION</button>
+          <button id="btn" onclick="audio1.pause();">PAUSE</button>
+
+          <script type = "text/javascript">
+            const audio1=new Audio()
+            audio1.src="./bubble.mp3"
+          </script>
+
+          </div>
+          
+
+         
+      
+      <br />
+
+      <div class="row">
+        <div class="col-md-3">
+          <button class="btn btn-info" id="random-data">
+            Generate Random Data
+          </button>
+        </div>
+        <div class="col-md-3">
+          <label>
+            Speed:
+            <input
+              type="range"
+              id="speed"
+              name="speed"
+              min="100"
+              max="800"
+              value="300"
+              onchange="setSpeed()"
+            />
+          </label>
+        </div>
+      </div>
+    </div>
+    <br><br><br>
+   
+    <center>
+      <div class="container" >
+        <div class="bar-chart">
+          <div id="chart"></div>
+          <hr />
+        </div>
+      </div>
+    </center>
+
+    <center><h3 id="comp" style="color: rgb(108, 29, 235);"></h3></center>
+    <br><br>
+    
+   
+   <div class="con">
+    <fieldset style="width: 600px; height: 800px;box-shadow: 5px;border-color: blueviolet;font-size: 16px;">
+     <h1 style="color: blueviolet;text-decoration-style: dashed;"><b>Bubble Sort Algorithm</b></h1>
+     <b>Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements if they are in the wrong order. This algorithm is not suitable for large data sets as its average and worst-case time complexity is quite high.</b>
+     <h3>How does Bubble Sort Work?
+     </h3>
+     
+
+     <p><h3>Input: arr[] = {6, 3, 0, 5}
+     </h3>
+       <b>
+       <ul>
+         <h4 style="color:blueviolet"><b>First Pass:</b> </h4>
+      <li>Bubble sort starts with very first two elements, comparing them to check which one is greater.
+       <li>( 6 3 0 5 ) –> ( 3 6 0 5 ), Here, algorithm compares the first two elements, and swaps since 6 > 3. </li>
+      <li>( 3 6 0 5 ) –>  ( 3 0 6 5 ), Swap since 6 > 0 
+       ( 3 0 6 5 ) –>  ( 3 0 5 6 ), Swap since 6 > 5</li>   
+      <h4 style="color:blueviolet"> <b>Second Pass:</b> </h4><li> Now, during second iteration it should look like this:
+      <li> ( 3 0 5 6 ) –>  ( 0 3 5 6 ), Swap since 3 > 0 
+       ( 0 3 5 6 ) –>  ( 0 3 5 6 ), No change as 5 > 3 
+        </li>
+      <h4 style="color:blueviolet"><b>Third Pass:</b></h4>
+       
+       <li>Now, the array is already sorted, but our algorithm does not know if it is completed.
+        <li> The algorithm needs one whole pass without any swap to know it is sorted.</li>
+        <li> ( 0 3 5 6 ) –>  ( 0 3 5 6 ), No change as 3 > 0 </li>
+        <li> Array is now sorted and no more pass will happen.</li></p></ul>
+</div></b><br><br>
+    
+
+          <div id="comp" class="comp" style="background-color: rgb(201, 239, 239);font-size: 16px;">
+          <b> <p><h3 style="color:deeppink ;">Complexity</h3><span>Worst Time: </span><span>O(n^2)</span><br><span>Avg. Time: </span><span>O(n^2)</span><br><span>Best Time: </span><span>O(n)</span><br><span>Space: </span><span>O(n)</span></p>
+          </b> </div><br><br><br> 
+         
+          <b><div id="mydiv" class="comp" style="background-color: antiquewhite;" name="mydiv">
+            <pre style=" font-family: 'Courier New', Courier, monospace;font-size: 16px;"><h3 style="color:deeppink ;">Bubble Sort</h3>function BubbleSort(list) {
+            swapped = true;
+            count = 1;
+            while (swapped) {
+              swapped = false;
+              for (let i = 0; i &lt; list.length - count; i++) {
+                if (list[i] &gt; list[i + 1]) {
+                  swapped = true;
+                  swap(i, i + 1, list);
+                }
+              }
+              count += 1;
+            }
+            return list;
+          }</pre></b></div></div>
+       
+      
+     
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="base.js"></script>
+    <script src="function.js"></script>
+  </body>
+</html>

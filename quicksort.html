@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<link rel="stylesheet" href="style.css" />
+    <title>Sorting Algorithm Visualizer </title>
+	<style>* {
+		margin: 0px;
+		padding: 0px;
+		box-sizing: border-box;
+	}
+
+   .comp{
+    padding-left: 05%;
+    width:100%;
+    font-size: 16px;
+    margin-left: 10%;
+    font-family:'Courier New', Courier, monospace;
+    border-color: deeppink;
+    border-style: dashed;
+    border-radius: 5px;
+
+}
+
+.con{
+    padding-left: 10%;
+    width:70%;
+    
+    font-size: 16px;
+    margin-left: 15%;
+    font-family:'Courier New', Courier, monospace;
+    border-color: blueviolet;
+    border-style: double;
+    border-radius: 5px;
+    background-color:azure;
+  
+}
+	.header {
+		font-size: 20px;
+		text-align: center;
+	}
+	
+	#array {
+		background-color: white;
+		height: 288px;
+		width: 598px;
+		margin: auto;
+		position: relative;
+		margin-top: 64px;
+	}
+	
+	.block {
+		width: 28px;
+		background-color:#7acdf4;
+		position: absolute;
+		bottom: 0px;
+		transition: 0.2s all ease;
+	}
+
+	.i{
+		width: 80%;
+		height:70%;
+		border: black;
+		border-radius: 5px;
+		box-sizing: content-box;
+	}
+	
+	.block_id {
+		position: absolute;
+		color: black;
+		margin-top: -20px;
+		width: 100%;
+		text-align: center;
+	}
+	
+	.block_id2 {
+		position: absolute;
+		color: black;
+		margin-top: 22px;
+		width: 100%;
+		text-align: center;
+	}
+	
+	.block2 {
+		width: 28px;
+		background-color: darkgray;
+		position: absolute;
+		transition: 0.2s all ease;
+	}
+	
+	.block_id3 {
+		position: absolute;
+		color: black;
+		margin-top: 1px;
+		width: 100%;
+		text-align: center;
+	}
+	
+	#count {
+		height: 20px;
+		width: 598px;
+		margin: auto;
+	}
+	</style>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap.min.css"
+    integrity="sha512-T584yQ/tdRR5QwOpfvDfVQUidzfgc2339Lc8uBDtcp/wYu80d7jwBgAxbyMh0a9YM9F8N3tdErpFI8iaGx6x5g=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <br>
+   
+	        
+    <div class="container">
+      <h2>Quick Sort</h2>
+    </div>
+
+    <div class="container">
+      <div class="form-inline">
+        <div class="form-group">
+          <select class="form-control" id="get-algo">
+            <option value="bubble-sort">Quick Sort</option> 
+          </select>
+        </div>
+      
+        <div class="form-group mx-sm-3">
+            <button class="btn btn-primary" id="sort" onclick="QuickSort(0, 19);">Sort</button>
+          </div>
+          <div class="form-group">
+            <button class="btn none btn-danger" id="stop">Stop</button>
+          </div>
+          <b><div class="btn btn-primary" style="margin-left: 25%;">
+            <a href="https://play.quizshow.io/show/9830c260927baa6d2a42" style="color:rgb(11, 26, 97);">Exercise</a>
+           </div></b>
+        </div>
+
+		
+<div>
+
+	<br><button id="btn" onclick="audio1.play();">EXPLANATION</button>
+	<button id="btn" onclick="audio1.pause();">PAUSE</button>
+
+	<script type = "text/javascript">
+	  const audio1=new Audio()
+	  audio1.src="./bubble.mp3"
+	</script>
+
+	</div>
+	
+        
+        <br />
+  
+        <div class="row">
+          <div class="col-md-3">
+            <button class="btn btn-info" id="random-data">
+              Generate Random Data
+            </button>
+          </div>
+          <div class="col-md-3">
+            <label>
+              Speed:
+              <input
+                type="range"
+                id="speed"
+                name="speed"
+                min="100"
+                max="800"
+                value="300"
+                onchange="setSpeed()"
+              />
+            </label>
+          </div>
+        </div>
+      </div>
+      <br><br>
+  
+	<div id="array"></div>
+	<div id="count"></div>
+	<br />
+	<h2 class="range" style="text-align: center"></h2>
+    
+ <center><h3> <p id="o" style="color:blueviolet;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;font-size: 20px;" ></p>
+ </h3></center>
+	
+   <div class="con">
+    <fieldset style="width: 600px; height: 3060px;box-shadow: 5px;border-color: blueviolet;font-size: 16px;">
+     <h1 style="color: blueviolet;text-decoration-style: dashed;"><b>Quick Sort Algorithm</b></h1>
+     <b>QuickSortLike Merge Sort, QuickSort is a Divide and Conquer algorithm. It picks an element as a pivot and partitions the given array around the picked pivot. There are many different versions of quickSort that pick pivot in different ways. 
+	 <li>Always pick the first element as a pivot.</li>
+	 <li>Always pick the last element as a pivot</li>
+	 <li>Pick a random element as a pivot.</li>
+	 <li>Pick median as the pivot.</li>
+	 
+	 <h3>How does Quick Sort Work?
+     </h3></b>
+     
+
+     <p>	 
+       <b>
+       <ul>
+         <h4 style="color:blueviolet"><b>Input: arr[]={10, 80, 30, 90, 40, 50, 70}</b> </h4>
+      <li>Indexes:  0   1   2   3   4   5   6 </li>
+	 <li>low = 0, high =  6, pivot = arr[h] = 70</li>  
+     <li>Initialize index of smaller element, i = -1</li>
+	 <img class="i" src="https://media.geeksforgeeks.org/wp-content/uploads/20220525094716/Artboard1.jpg">
+	 <li>Traverse elements from j = low to high-1</li>
+		<li>j = 0: Since arr[j] <= pivot, do i++ and swap(arr[i], arr[j])<li>
+		<li>i = 0</li>
+		<li>arr[] = {10, 80, 30, 90, 40, 50, 70} // No change as i and j are same</li>
+		<li>j = 1: Since arr[j] > pivot, do nothing
+       <img class="i" src="https://media.geeksforgeeks.org/wp-content/uploads/20220525094736/Artboard2.jpg">
+	   </li>
+		<li>j = 2 : Since arr[j] <= pivot, do i++ and swap(arr[i], arr[j])</li>
+		<li>i = 1</li>
+		<li>arr[] = {10, 30, 80, 90, 40, 50, 70} // We swap 80 and 30 <li>
+		<li><img class="i" src="https://media.geeksforgeeks.org/wp-content/uploads/20220525094756/Artboard3.jpg">
+		</li>
+		<li>j = 3 : Since arr[j] > pivot, do nothing // No change in i and arr[]</li>
+		<li>j = 4 : Since arr[j] <= pivot, do i++ and swap(arr[i], arr[j])</li>
+		<li>i = 2</li>
+		<li>arr[] = {10, 30, 40, 90, 80, 50, 70} // 80 and 40 Swapped</li>
+		<li><img class="i" src="https://media.geeksforgeeks.org/wp-content/uploads/20220525094812/Artboard4.jpg">
+		</li>
+		<li>j = 5 : Since arr[j] <= pivot, do i++ and swap arr[i] with arr[j] </li>
+		<li>i = 3 </li>
+		<li>arr[] = {10, 30, 40, 50, 80, 90, 70} // 90 and 50 Swapped <li>
+		<li><img class="i" src="https://media.geeksforgeeks.org/wp-content/uploads/20220525094930/Artboard51.jpg">
+		</li>
+		<li>We come out of loop because j is now equal to high-1.</li>
+		<li>Finally we place pivot at correct position by swapping arr[i+1] and arr[high] (or pivot) </li>
+		<li>arr[] = {10, 30, 40, 50, 70, 90, 80} // 80 and 70 Swapped </li>
+		<li><img class="i" src="https://media.geeksforgeeks.org/wp-content/uploads/20220527110840/Artboard10.jpg">
+		</li>
+		<li>Now 70 is at its correct place. All elements smaller than 70 are before it and all elements greater than 70 are after it.</li>
+		<li>Since quick sort is a recursive function, we call the partition function again at left and right partitions</li>
+		<li><img class="i" src="https://media.geeksforgeeks.org/wp-content/uploads/20220527110915/Artboard101.jpg">
+		</li>
+		<li>Again call function at right part and swap 80 and 90</li>
+		<li><img class="i" src="https://media.geeksforgeeks.org/wp-content/uploads/20220527110931/Artboard102.jpg">
+		</li>
+<br><br>
+          <div id="comp" class="comp" style="background-color: rgb(201, 239, 239);font-size: 16px;">
+          <b> <p><h3 style="color:deeppink ;">Complexity</h3><span>Worst Time: </span><span>O(n^2)</span><br><span>Avg. Time: </span><span>O(n * log(n))</span><br><span>Best Time: </span><span>O(n * log(n))</span><br><span>Space: </span><span>O(log(n))</span></p>
+          </b> </div><br><br><br> 
+         
+          <b><div id="mydiv" class="comp" style="background-color: antiquewhite;" name="mydiv">
+		<pre style=" font-family: 'Courier New', Courier, monospace;font-size: 16px;"><h3 style="color:deeppink ;">Bubble Sort</h3>function BubbleSort(list) {
+function QuickSort(list, lowerBound = 0, upperBound = list.length - 1,) {
+  if (lowerBound >= upperBound) {
+    return list;
+  }
+  const pivotIdx = Math.floor((lowerBound + upperBound) / 2);
+  const index = partition(list, lowerBound, upperBound, pivotIdx);
+
+  // Run recursively on the smallest sub-array to optimize space complexity
+  const leftSubArrayIsSmaller = (index - 1) - lowerBound < upperBound - index;
+  if (leftSubArrayIsSmaller) {
+    QuickSort(list, lowerBound, index - 1, steps);
+    QuickSort(list, index, upperBound, steps);
+  } else {
+    QuickSort(list, index, upperBound, steps);
+    QuickSort(list, lowerBound, index - 1, steps);
+  }
+  return list;
+}
+      
+function partition(list, left, right, pivotIdx) {
+  while (left <= right) {
+    while (list[left] < list[pivotIdx]) {
+      left++;
+    }
+    while (list[pivotIdx] < list[right]) {
+      right--;
+    }
+    if (left <= right) {
+      swap(left, right, list);
+      if (pivotIdx === left) {
+        pivotIdx = right;
+      } else if (pivotIdx === right) {
+        pivotIdx = left;
+      }
+      left++;
+      right--;
+    }
+  }
+  return left;
+}	</pre></b></div></div>
+       
+      
+
+	<script >c=0;var container = document.getElementById("array");
+function setSpeed() {
+  time = 1000 - document.getElementById("speed").value;
+}
+	// Function to generate the array of blocks
+	function generatearray() {
+		for (var i = 0; i < 20; i++) {
+			// Return a value from 1 to 100 (both inclusive)
+			var value = Math.ceil(Math.random() * 100);
+	
+			// Creating element div
+			var array_ele = document.createElement("div");
+	
+			// Adding class 'block' to div
+			array_ele.classList.add("block");
+	
+			// Adding style to div
+			array_ele.style.height =
+			`${value * 3}px`;
+			array_ele.style.transform =
+			`translate(${i * 30}px)`;
+	
+			// Creating label element for displaying
+			// size of particular block
+			var array_ele_label =
+			document.createElement("label");
+			array_ele_label.classList.add("block_id");
+			array_ele_label.innerText = value;
+	
+			// Appending created elements to index.html
+			array_ele.appendChild(array_ele_label);
+			container.appendChild(array_ele);
+		}
+	}
+	
+    function ran()
+    {
+        var data = randomData(maxElement, dataRange);
+function setSpeed() {
+  time = 1000 - document.getElementById("speed").value;
+}
+    }
+	// Function to generate indexes
+	var count_container = document.getElementById("count");
+	
+	function generate_idx() {
+		for (var i = 0; i < 20; i++) {
+			// Creating element div
+			var array_ele2 = document.createElement("div");
+	
+			// Adding class 'block2' to div
+			array_ele2.classList.add("block2");
+	
+			// Adding style to div
+			array_ele2.style.height =
+			`${20}px`;
+			array_ele2.style.transform =
+			`translate(${i * 30}px)`;
+	
+			//adding indexes
+			var array_ele_label2 =
+			document.createElement("label");
+			array_ele_label2.classList.add("block_id3");
+			array_ele_label2.innerText = i;
+	
+			// Appending created elements to index.html
+			array_ele2.appendChild(array_ele_label2);
+			count_container.appendChild(array_ele2);
+		}
+	}
+	
+	async function hoare_partition(l, r, delay = 700) {
+		var blocks =
+		document.querySelectorAll(".block");
+		var pivot =
+		Number(blocks[l].childNodes[0].innerHTML);
+	
+		var i = l - 1;
+		var j = r + 1;
+		
+		while (true) {c++;
+               console.log(c);
+			   document.getElementById("o").innerHTML="SWAPS: "+c;
+				
+			// Find leftmost element greater than
+			// or equal to pivot
+			do {
+				i++;
+				if (i - 1 >= l) blocks[i - 1].style.backgroundColor = "red";
+				blocks[i].style.backgroundColor = "yellow";
+				//To wait for 700 milliseconds
+				await new Promise((resolve) =>
+					setTimeout(() => {
+						resolve();
+					}, delay)
+				);
+			} while (Number(blocks[i].childNodes[0].innerHTML) < pivot);
+	
+			// Find rightmost element smaller than
+			// or equal to pivot
+			do {
+				j--;
+				if (j + 1 <= r) blocks[j + 1].style.backgroundColor = "pink";
+				blocks[j].style.backgroundColor = "yellow";
+				//To wait for 700 milliseconds
+				await new Promise((resolve) =>
+					setTimeout(() => {
+						resolve();
+					}, delay)
+				);
+			} while (Number(blocks[j].childNodes[0].innerHTML) > pivot);
+	
+			// If two pointers met.
+			if (i >= j) {
+				for (var k = 0; k < 20; k++) blocks[k].style.backgroundColor = "#6b5b95";
+				return j;
+			}
+	
+			//swapping ith and jth element
+			var temp1 = blocks[i].style.height;
+			var temp2 = blocks[i].childNodes[0].innerText;
+			blocks[i].style.height = blocks[j].style.height;
+			blocks[j].style.height = temp1;
+			blocks[i].childNodes[0].innerText = blocks[j].childNodes[0].innerText;
+			blocks[j].childNodes[0].innerText = temp2;
+			//To wait for 700 milliseconds
+			await new Promise((resolve) =>
+				setTimeout(() => {
+					resolve();
+				}, delay)
+			);
+		}
+	}
+	
+	// Asynchronous QuickSort function
+	async function QuickSort(l, r, delay = 100) {
+		// QuickSort Algorithm'
+		if (self.abort) {
+          self.abort = false;
+          return;
+        }
+		if (l < r) {
+			//Storing the index of pivot element after partition
+			var pivot_idx = await hoare_partition(l, r);
+			//Recursively calling quicksort for left partition
+			await QuickSort(l, pivot_idx);
+			//Recursively calling quicksort for right partition
+			await QuickSort(pivot_idx + 1, r);
+		}
+	}
+	
+	// Calling generatearray function
+	generatearray();
+	
+	</script>
+
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="base.js"></script>
+
+</body>
+
+</html>

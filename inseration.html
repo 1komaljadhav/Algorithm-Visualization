@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+	
+<!-- head -->
+<head>
+	
+	<!-- linking style.css -->
+	<link href="style.css" rel="stylesheet" />
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap.min.css"
+    integrity="sha512-T584yQ/tdRR5QwOpfvDfVQUidzfgc2339Lc8uBDtcp/wYu80d7jwBgAxbyMh0a9YM9F8N3tdErpFI8iaGx6x5g=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <link rel="stylesheet" href="style.css" />
+    <style>
+        .mySlides {
+display: none;
+}
+
+body {
+background-color: white;
+font-family: Verdana, sans-serif;
+}
+
+.head {
+margin-top: 20px;
+margin-right: 20vw;
+margin-left: 20vw;
+text-align: center;
+font-size: 30px;
+background-color: #6f459e;
+color: white;
+border-radius:19px;
+font-weight: bolder;
+}
+
+.data-container {
+width: 600px;
+height: 364px;
+position: relative;
+margin: 0 auto;
+}
+
+.bar {
+width: 28px;
+position: absolute;
+left: 0;
+bottom: 0;
+background-color: rgb(146, 215, 211);
+transition: 0.2s all ease;
+}
+
+.bar__id {
+position: absolute;
+top: -24px;
+width: 100%;
+text-align: center;
+}
+.btn1
+{
+padding: 12px;
+font-weight: bolder;
+background-color: #ee5ac4;
+border-radius: 10px;
+color: white;
+font-size: 16px;
+border: white;
+margin-top: 1vw;
+margin-right: 1vw;
+}
+   .comp{
+    padding-left: 05%;
+    width:50%;
+    font-size: 16px;
+    margin-left: 25%;
+    font-family:'Courier New', Courier, monospace;
+    border-color: deeppink;
+    border-style: dashed;
+    border-radius: 5px;
+
+}
+
+.con{
+    padding-left: 10%;
+   
+    
+    font-size: 16px;
+    margin-left: 15%;
+    font-family:'Courier New', Courier, monospace;
+    border-color: blueviolet;
+    border-style: dotted;
+    background-color:azure;
+  
+}.comp{
+      padding-left: 02%;
+      width:60%;
+      font-size: 16px;
+      margin-left: 25%;
+      font-family:'Courier New', Courier, monospace;
+      border-color: deeppink;
+      border-style: dashed;
+      border-radius: 5px;
+  
+  }
+  
+  .i{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width:50%;
+  }
+  
+  .con{
+      padding-left: 05%;
+      width:110%;
+      
+      font-size: 16px;
+      margin-left: 0;
+            font-family:'Courier New', Courier, monospace;
+    
+           border-radius: 5px;
+      background-color:azure;
+    
+  }
+.btn2
+{
+padding: 12px;
+font-weight: bolder;
+background-color: #6f459e;
+border-radius: 10px;
+color: white;
+font-size: 16px;
+border: white
+}
+#ele{
+text-align: center;
+height: 35px;
+}
+
+    </style>
+</head>
+
+<!-- body -->
+<body>
+	<br>
+
+    <div class="container">
+      <h2>Insertion Sort</h2>
+    </div>
+
+    <br />
+    <div class="container">
+      <div class="form-inline">
+        <div class="form-group">
+          <select class="form-control" id="get-algo">
+            <option value="bubble-sort">Insertion Sort</option>
+            
+          </select>
+        </div>
+
+        <div class="form-group mx-sm-3">
+          <button class="btn btn-primary" id="sort" onclick="InsertionSort(),disable()">Sort</button>
+        </div>
+        <div class="form-group">
+          <button class="btn none btn-danger" id="stop">Stop</button>
+        </div>
+        <b><div class="btn btn-primary" style="margin-left: 25%;">
+          <a href="https://play.quizshow.io/show/b0fc22190d521454d104" style="color:#371d82;">Exercise</a>
+         </div></b>
+      </div>
+
+
+      <div >
+
+        <br><button  onclick="audio.play();">EXPLANATION</button>
+        <button id="btn" onclick="audio.pause();">PAUSE</button>
+
+        <script type = "text/javascript">
+          const audio=new Audio()
+          audio.src="./audioclip.mp3"
+          
+        </script>
+
+        </div>
+      <br />
+
+      <div class="row">
+        <div class="col-md-3">
+          <button class="btn btn-info" id="random-data" onclick="generate()">
+            Generate Random Data
+          </button>
+        </div>
+        <div class="col-md-3">
+          <label>
+            Speed:
+            <input
+              type="range"
+              id="speed"
+              name="speed"
+              min="100"
+              max="800"
+              value="300"
+              onchange="setSpeed()"
+            />
+          </label>
+        </div>
+      </div>
+    </div>
+    <br><br>
+
+    <br><br>
+	<section class="data-container"></section>
+	<section id="ele"></section>
+	<div style="margin: auto; width: fit-content;">
+
+    
+  <div class="con">
+    <fieldset style="width: 800px; height: 1300px;box-shadow: 5px;border-color: blueviolet;font-size: 16px;">
+     <h1 style="color: blueviolet;text-decoration-style: dashed;"><b>Insertion Sort Algorithm</b></h1>
+     <b>Insertion sort is a simple sorting algorithm that works similar to the way you sort playing cards in your hands. The array is virtually split into a sorted and an unsorted part. Values from the unsorted part are picked and placed at the correct position in the sorted part.<hr>
+     <ul>
+      <p>Characteristics of Insertion Sort:-</p>
+      <li>This algorithm is one of the simplest algorithm with simple implementation.</li>
+      <li>Basically, Insertion sort is efficient for small data values</li>
+      <li>Insertion sort is adaptive in nature, i.e. it is appropriate for data sets which are already partially sorted.</li>
+     </ul>
+
+    </b>
+     <hr>
+     
+     <h3>Working of Insertion Sort algorithm:
+     </h3>
+     
+
+     <p><h3>Input: arr[]: {12, 11, 13, 5, 6}
+
+
+     </h3>
+       <b>
+       <ul>
+         <h4 style="color:blueviolet"><b>First Pass:</b> </h4>
+      <li>Initially, the first two elements of the array are compared in insertion sort.
+        12   	   11   	   13   	   5   	   6   
+       <li>Here, 12 is greater than 11 hence they are not in the ascending order and 12 is not at its correct position. Thus, swap 11 and 12.  </li>
+      <li>So, for now 11 is stored in a sorted sub-array.
+        11   	   12   	   13   	   5   	   6     </li>   
+      <h4 style="color:blueviolet"> <b>Second Pass:</b> </h4><li> Now, move to the next two elements and compare them
+        11   	   12   	   13   	   5   	   6   
+      <li> Here, 13 is greater than 12, thus both elements seems to be in ascending order, hence, no swapping will occur. 12 also stored in a sorted sub-array along with 11  </li>
+        
+      <h4 style="color:blueviolet"><b>Third Pass:</b></h4>
+       
+       <li>Now, two elements are present in the sorted sub-array which are 11 and 12
+        <li> Moving forward to the next two elements which are 13 and 5
+          11   	   12   	   13   	   5   	   6    </li>
+          <li>Both 5 and 13 are not present at their correct place so swap them
+            11   	   12   	   5   	   13   	   6   </li>
+            <li>After swapping, elements 12 and 5 are not sorted, thus swap again
+              11   	   5   	   12   	   13   	   6   </li>
+              <li>Here, again 11 and 5 are not sorted, hence swap again
+                5   	   11   	   12   	   13   	   6  </li>
+                <li>Here, 5 is at its correct position</li>
+                <h4 style="color:blueviolet"><b>Fourth Pass:</b></h4>
+        <li>Now, the elements which are present in the sorted sub-array are 5, 11 and 12</li>
+        <li>Moving to the next two elements 13 and 6
+          5   	   11   	   12   	   13   	   6   </li>
+
+          <li>Clearly, they are not sorted, thus perform swap between both
+            5   	   11   	   12   	   6   	   13  </li>
+            <li>Now, 6 is smaller than 12, hence, swap again
+              5   	   11   	   6   	   12   	   13  </li>
+              <li>Here, also swapping makes 11 and 6 unsorted hence, swap again
+                5   	   6   	   11   	   12   	   13   </li>
+                <li>Finally, the array is completely sorted.</li>
+
+          <h4 style="color:blueviolet"><b>Fifth Pass:</b></h4>
+        
+          <li> At last the largest value present in the array automatically get placed at the last position in the array.  </li>
+          <li> As 25 is the 4th lowest value hence, it will place at the fourth position.
+            11   	   12   	   22   	   25   	   64   </li>
+            <li>The resulted array is the sorted array.
+              11   	   12   	   22   	   25   	   64   </li>
+          </p></ul>
+</div></b><br><br>
+    
+
+          <div id="comp" class="comp" style="background-color: rgb(201, 239, 239);font-size: 16px;">
+          <b> <p><h3 style="color:deeppink ;">Complexity</h3><span>Worst Time: </span><span>O(n^2)</span><br><span>Avg. Time: </span><span>O(n^2)</span><br><span>Best Time: </span><span>O(n)</span><br><span>Space: </span><span>O(n)</span></p>
+          </b> </div><br><br><br> 
+         
+          <b><div id="mydiv" class="comp" style="background-color: antiquewhite;" name="mydiv">
+            <pre style=" font-family: 'Courier New', Courier, monospace;font-size: 16px;"><h3 style="color:deeppink ;">Insertion Sort</h3>       
+              function InsertionSort(list) {
+                const steps = [];
+                list.forEach((el, i) => {
+                  let j = i;
+                  while (j > 0 && list[j - 1] > list[j]) {
+                    swap(j - 1, j, list);
+                    j--;
+                  }
+                });
+                return list;
+              }</pre></b></div></div>
+       
+             
+
+
+
+<!-- linking index.js -->
+<script >
+    function setSpeed() {
+  time = 1000 - document.getElementById("speed").value;
+}
+
+    const container =
+document.querySelector(".data-container");
+
+// Function to generate bars
+function generatebars(num = 20) {
+
+//For loop to generate 20 bars
+for (let i = 0; i < num; i += 1) {
+
+	// To generate random values from 1 to 100
+	const value = Math.floor(Math.random() * 100) + 1;
+
+	// To create element "div"
+	const bar = document.createElement("div");
+
+	// To add class "bar" to "div"
+	bar.classList.add("bar");
+
+	// Provide height to the bar
+	bar.style.height = `${value * 3}px`;
+	// Translate the bar towards positive X axis
+	bar.style.transform = `translateX(${i * 30}px)`;
+
+	// To create element "label"
+	const barLabel = document.createElement("label");
+
+	// To add class "bar_id" to "label"
+	barLabel.classList.add("bar__id");
+
+	// Assign value to "label"
+	barLabel.innerHTML = value;
+
+	// Append "Label" to "div"
+	bar.appendChild(barLabel);
+
+	// Append "div" to "data-container div"
+	container.appendChild(bar);
+}
+}
+
+// Asynchronous function to perform "Insertion Sort"
+async function InsertionSort(delay = 600) {
+let bars = document.querySelectorAll(".bar");
+c=0;
+// Provide lightgreen colour to 0th bar
+bars[0].style.backgroundColor = " rgb(49, 226, 13)";
+for (var i = 1; i < bars.length; i += 1) {
+  c++;
+    console.log(c);
+	// Assign i-1 to j
+	var j = i - 1;
+
+	// To store the integer value of ith bar to key
+	var key =
+	parseInt(bars[i].childNodes[0].innerHTML);
+
+	// To store the ith bar height to height
+	var height = bars[i].style.height;
+	
+	// For selecting section having id "ele"
+	var barval=document.getElementById("ele")
+
+	// For dynamically Updating the selected element
+	
+
+	//Provide darkblue color to the ith bar
+	bars[i].style.backgroundColor = "#5e5e5e";
+	
+	// To pause the execution of code for 600 milliseconds
+	await new Promise((resolve) =>
+	setTimeout(() => {
+	resolve();
+	}, 600)
+);
+c=0;
+	// For placing selected element at its correct position
+	while (j >= 0 && parseInt(bars[j].childNodes[0].innerHTML) > key) {
+		
+	// Provide darkblue color to the jth bar
+	bars[j].style.backgroundColor = "darkblue";
+		
+	// For placing jth element over (j+1)th element
+	bars[j + 1].style.height = bars[j].style.height;
+	bars[j + 1].childNodes[0].innerText =
+	bars[j].childNodes[0].innerText;
+
+	// Assign j-1 to j
+	j = j - 1;
+
+	// To pause the execution of code for 600 milliseconds
+	await new Promise((resolve) =>
+		setTimeout(() => {
+		resolve();
+		}, 600)
+	);
+		
+	// Provide lightgreen color to the sorted part
+	for(var k=i;k>=0;k--){
+    
+		bars[k].style.backgroundColor = " rgb(49, 226, 13)";
+	}
+	}
+
+	// Placing the selected element to its correct position
+	bars[j + 1].style.height = height;
+	bars[j + 1].childNodes[0].innerHTML = key;
+	
+	// To pause the execution of code for 600 milliseconds
+	await new Promise((resolve) =>
+	setTimeout(() => {
+		resolve();
+	}, 600)
+	);
+	
+	// Provide light green color to the ith bar
+	bars[i].style.backgroundColor = " rgb(49, 226, 13)";
+}
+
+barval.innerHTML="<h3>Sorted!!!</h3>";
+	
+// To enable the button
+// "Generate New Array" after final(sorted)
+document.getElementById("Button1")
+.disabled = false;
+document.getElementById("Button1")
+.style.backgroundColor = "#6f459e";
+
+// To enable the button
+// "Insertion Sort" after final(sorted)
+document.getElementById("Button2")
+.disabled = false;
+document.getElementById("Button2")
+.style.backgroundColor = "#6f459e";
+}
+
+// Call "generatebars()" function
+generatebars();
+
+// Function to generate new random array
+function generate()
+{
+window.location.reload();
+}
+
+// Function to disable the button
+function disable()
+{
+// To disable the button "Generate New Array"
+document.getElementById("Button1")
+.disabled = true;
+document.getElementById("Button1")
+.style.backgroundColor = "#d8b6ff";
+
+// To disable the button "Insertion Sort"
+document.getElementById("Button2")
+.disabled = true;
+document.getElementById("Button2")
+.style.backgroundColor = "#d8b6ff";
+}
+.0
+</script>
+</html>
